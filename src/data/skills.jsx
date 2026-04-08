@@ -6,7 +6,7 @@ export const skillCategories = [
     title: "Artificial Intelligence",
     subtitle: "ML & LLM Systems",
     proficient: ["Python", "LSTM", "GRU"],
-    learning: ["PyTorch", "Retrieval-Augmented Generation (RAG)", "Search Algorithms"],
+    learning: ["TensorFlow", "PyTorch", "Retrieval-Augmented Generation (RAG)", "LangChain", "Search Algorithms"],
   },
   {
     icon: <LuCode className="w-6 h-6 text-purple-500" />,

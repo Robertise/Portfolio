@@ -9,10 +9,10 @@ export const projects = [
       "Traditional route planning methods often fail to consider dynamic traffic conditions, leading to inefficient navigation and longer travel times.",
     solution:
       "Developed a route guidance system combining the IDA* search algorithm with machine learning models (LSTM and GRU) to analyze traffic patterns and predict optimal routes. The system evaluates multiple paths while minimizing travel cost and congestion impact.",
-    duration: "Jan 2026 - Present",
-    codeUrl: "",
-    liveUrl: "",
-    tags: ["Python", "Machine Learning", "LSTM", "GRU", "Search Algorithms"],
+    duration: "Dec 2025 - Apr 2026",
+    codeUrl: "https://github.com/COS30019-IntroductiontoAI/Traffic-based-Route-Guidance-System",
+    liveUrl: "https://cos30019-introductiontoai.github.io/Traffic-based-Route-Guidance-System/route-guidance",
+    tags: ["Python", "Machine Learning", "LSTM", "GRU", "Search Algorithms",  "TensorFlow"],
   },
   {
     title: "LLM-Based Cybersecurity Log Analyzer",
@@ -25,7 +25,7 @@ export const projects = [
     solution:
       "Built an AI-assisted analysis tool using Retrieval-Augmented Generation (RAG) to interpret system log entries and map them to cybersecurity techniques. The system retrieves relevant threat intelligence and generates contextual explanations to assist analysts.",
     duration: "Jan 2026 - Present",
-    codeUrl: "",
+    codeUrl: "https://github.com/nghiatran0401/cyber-llm-agent",
     liveUrl: "",
     tags: ["Python", "LLM", "RAG", "Cybersecurity", "NLP"],
   },
@@ -57,7 +57,7 @@ export const projects = [
     duration: "May 2025 - Aug 2025",
     codeUrl: "https://github.com/Robertise/Smart-Home-Management-System.git",
     liveUrl: "",
-    tags: ["React", "Node.js", "JavaScript", "REST API", "PostgreSQL", "Web Dashboard"],
+    tags: ["React", "Node.js", "JavaScript", "Tailwind CSS", "REST API", "PostgreSQL", "Web Dashboard"],
   },
   {
     title: "Personal Portfolio Website",
@@ -72,6 +72,6 @@ export const projects = [
     duration: "Dec 2025 - March 2026",
     codeUrl: "https://github.com/Robertise/Portfolio.git",
     liveUrl: "https://robertise.github.io/portfolio",
-    tags: ["JavaScript", "React", "Frontend Development"],
+    tags: ["JavaScript", "React", "Tailwind CSS", "Frontend Development"],
   },
 ];
