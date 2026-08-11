@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { createPortal } from "react-dom";
 import { 
   LuCode, 
   LuExternalLink, 
@@ -33,24 +34,24 @@ const ProjectModal = ({ project, onClose }) => {
   const hasLive = project.liveUrl && project.liveUrl.trim() !== "";
   const isPrivateRepo = project.privateRepo === true;
 
-  return (
+  const modalContent = (
     <AnimatePresence>
       <div 
-        className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 md:p-10 overflow-y-auto bg-black/70 backdrop-blur-md"
+        className="fixed inset-0 z-[9999] flex items-center justify-center p-4 sm:p-6 overflow-y-auto bg-slate-900/25 dark:bg-black/40 backdrop-blur-sm"
         onClick={onClose}
       >
         <motion.div
-          initial={{ opacity: 0, scale: 0.92, y: 20 }}
+          initial={{ opacity: 0, scale: 0.94, y: 15 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
-          exit={{ opacity: 0, scale: 0.92, y: 20 }}
-          transition={{ duration: 0.25, ease: "easeOut" }}
+          exit={{ opacity: 0, scale: 0.94, y: 15 }}
+          transition={{ duration: 0.2, ease: "easeOut" }}
           onClick={(e) => e.stopPropagation()}
-          className="relative w-full max-w-4xl max-h-[90vh] bg-(--card-background) border border-(--border-color) rounded-2xl shadow-2xl overflow-y-auto flex flex-col my-auto text-(--text-primary)"
+          className="relative w-full max-w-3xl max-h-[88vh] bg-(--card-background) border border-(--border-color) rounded-2xl shadow-2xl overflow-y-auto flex flex-col my-auto text-(--text-primary)"
         >
           {/* Sticky Modal Header */}
           <div className="sticky top-0 z-20 flex items-center justify-between px-6 py-4 bg-(--card-background)/95 backdrop-blur-md border-b border-(--border-color)">
             <div className="flex items-center gap-3">
-              <span className="px-2.5 py-1 text-xs font-semibold rounded-full bg-(--accent)/15 text-(--accent) border border-(--accent)/30">
+              <span className="px-3 py-1 text-xs font-semibold rounded-full bg-(--accent)/15 text-(--accent) border border-(--accent)/30">
                 {project.type}
               </span>
               <span className="text-xs text-gray-500 font-mono hidden sm:inline">
@@ -60,7 +61,7 @@ const ProjectModal = ({ project, onClose }) => {
 
             <button
               onClick={onClose}
-              className="p-2 rounded-full hover:bg-(--hover-bg) text-(--text-secondary) hover:text-(--text-primary) transition-colors"
+              className="p-1.5 rounded-full hover:bg-(--hover-bg) text-(--text-secondary) hover:text-(--text-primary) transition-colors"
               aria-label="Close modal"
             >
               <LuX className="w-5 h-5" />
@@ -68,14 +69,14 @@ const ProjectModal = ({ project, onClose }) => {
           </div>
 
           {/* Modal Content */}
-          <div className="p-6 md:p-8 space-y-8">
+          <div className="p-6 md:p-7 space-y-6">
             {/* Title & Role Header */}
             <div>
-              <h2 className="text-2xl md:text-3xl font-bold text-(--text-primary) leading-snug mb-2">
+              <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-(--text-primary) leading-snug mb-2">
                 {project.title}
               </h2>
               {project.roleName && (
-                <p className="text-sm font-medium text-(--accent) flex items-center gap-2">
+                <p className="text-xs sm:text-sm font-medium text-(--accent) flex items-center gap-2">
                   <span className="w-2 h-2 rounded-full bg-(--accent) animate-pulse"></span>
                   Role: {project.roleName}
                 </p>
@@ -83,7 +84,7 @@ const ProjectModal = ({ project, onClose }) => {
             </div>
 
             {/* Project Banner Image */}
-            <div className="w-full h-56 md:h-72 rounded-xl overflow-hidden border border-(--border-color) bg-(--bg-primary)">
+            <div className="w-full h-48 sm:h-60 md:h-64 rounded-xl overflow-hidden border border-(--border-color) bg-(--bg-primary)">
               <img
                 src={project.image}
                 alt={project.title}
@@ -98,16 +99,16 @@ const ProjectModal = ({ project, onClose }) => {
                   <LuSparkles className="w-4 h-4 text-amber-500" />
                   Key Highlights & Results
                 </h3>
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3">
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
                   {project.highlights.map((h, i) => (
                     <div
                       key={i}
-                      className="p-3.5 rounded-xl bg-(--bg-primary) border border-(--border-color) flex flex-col justify-center gap-1"
+                      className="p-3 rounded-xl bg-(--bg-primary) border border-(--border-color) flex flex-col justify-center gap-1"
                     >
                       <span className="text-xs text-(--text-secondary) font-medium">
                         {h.label}
                       </span>
-                      <span className="text-sm font-bold text-(--accent)">
+                      <span className="text-xs sm:text-sm font-bold text-(--accent)">
                         {h.value}
                       </span>
                     </div>
@@ -117,25 +118,25 @@ const ProjectModal = ({ project, onClose }) => {
             )}
 
             {/* Problem & Solution Detailed Section */}
-            <div className="space-y-6">
+            <div className="space-y-5">
               {/* Problem */}
-              <div className="p-5 rounded-xl bg-red-500/5 border border-red-500/20">
-                <h3 className="text-sm font-bold text-red-500 uppercase tracking-widest mb-2 flex items-center gap-2">
+              <div className="p-4 sm:p-5 rounded-xl bg-red-500/5 border border-red-500/20">
+                <h3 className="text-xs sm:text-sm font-bold text-red-500 uppercase tracking-widest mb-2 flex items-center gap-2">
                   <span className="w-2 h-2 rounded-full bg-red-500"></span>
                   The Problem
                 </h3>
-                <p className="text-sm md:text-base text-(--text-secondary) leading-relaxed">
+                <p className="text-xs sm:text-sm text-(--text-secondary) leading-relaxed">
                   {project.fullProblem || project.problem}
                 </p>
               </div>
 
               {/* Solution */}
-              <div className="p-5 rounded-xl bg-emerald-500/5 border border-emerald-500/20">
-                <h3 className="text-sm font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-widest mb-2 flex items-center gap-2">
+              <div className="p-4 sm:p-5 rounded-xl bg-emerald-500/5 border border-emerald-500/20">
+                <h3 className="text-xs sm:text-sm font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-widest mb-2 flex items-center gap-2">
                   <span className="w-2 h-2 rounded-full bg-emerald-500"></span>
                   The Solution & Architecture
                 </h3>
-                <p className="text-sm md:text-base text-(--text-secondary) leading-relaxed">
+                <p className="text-xs sm:text-sm text-(--text-secondary) leading-relaxed">
                   {project.fullSolution || project.solution}
                 </p>
               </div>
@@ -162,13 +163,13 @@ const ProjectModal = ({ project, onClose }) => {
 
           {/* Sticky Modal Footer Actions */}
           <div className="sticky bottom-0 z-20 flex items-center justify-between px-6 py-4 bg-(--card-background)/95 backdrop-blur-md border-t border-(--border-color) flex-wrap gap-3">
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-3 flex-wrap">
               {hasCode ? (
                 <a
                   href={project.codeUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-4 py-2 bg-(--primary) text-white rounded-lg text-sm font-medium hover:opacity-90 transition-opacity flex items-center gap-2"
+                  className="px-4 py-2 bg-(--primary) text-white rounded-lg text-xs sm:text-sm font-medium hover:opacity-90 transition-opacity flex items-center gap-2"
                 >
                   <LuCode className="w-4 h-4" />
                   <span>View Source Code</span>
@@ -177,12 +178,12 @@ const ProjectModal = ({ project, onClose }) => {
               ) : isPrivateRepo ? (
                 <span className="px-3.5 py-2 bg-purple-500/10 text-purple-400 border border-purple-500/30 rounded-lg text-xs font-semibold flex items-center gap-2">
                   <LuLock className="w-3.5 h-3.5" />
-                  <span>Source Code Private (Under Double-Blind Review)</span>
+                  <span>Private Repo (Under Review)</span>
                 </span>
               ) : (
                 <span className="px-3.5 py-2 bg-amber-500/10 text-amber-500 border border-amber-500/30 rounded-lg text-xs font-semibold flex items-center gap-2">
                   <LuLoader className="w-3.5 h-3.5 animate-spin" />
-                  <span>Project in Progress</span>
+                  <span>In Progress</span>
                 </span>
               )}
 
@@ -191,7 +192,7 @@ const ProjectModal = ({ project, onClose }) => {
                   href={project.liveUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-4 py-2 border border-(--border-color) text-(--text-primary) rounded-lg text-sm font-medium hover:bg-(--hover-bg) transition-colors flex items-center gap-2"
+                  className="px-4 py-2 border border-(--border-color) text-(--text-primary) rounded-lg text-xs sm:text-sm font-medium hover:bg-(--hover-bg) transition-colors flex items-center gap-2"
                 >
                   <LuExternalLink className="w-4 h-4" />
                   <span>Live Demo</span>
@@ -206,7 +207,7 @@ const ProjectModal = ({ project, onClose }) => {
 
             <button
               onClick={onClose}
-              className="px-5 py-2 border border-(--border-color) text-(--text-secondary) hover:text-(--text-primary) hover:bg-(--hover-bg) rounded-lg text-sm font-medium transition-colors"
+              className="px-5 py-2 border border-(--border-color) text-(--text-secondary) hover:text-(--text-primary) hover:bg-(--hover-bg) rounded-lg text-xs sm:text-sm font-medium transition-colors"
             >
               Close
             </button>
@@ -215,6 +216,8 @@ const ProjectModal = ({ project, onClose }) => {
       </div>
     </AnimatePresence>
   );
+
+  return createPortal(modalContent, document.body);
 };
 
 const ProjectCard = ({ project, onOpenDetails }) => {
@@ -279,7 +282,7 @@ const ProjectCard = ({ project, onOpenDetails }) => {
             {/* Tags & Action Bar */}
             <div className="mt-auto flex items-center justify-between gap-2">
               <div className="flex flex-wrap gap-1">
-                {project.tags.slice(0, 3).map((tag, i) => (
+                {project.tags.slice(0, 2).map((tag, i) => (
                   <span
                     key={i}
                     className="px-2 py-0.5 bg-(--bg-primary) text-(--accent) text-[11px] font-medium rounded border border-(--border-color)"
@@ -381,7 +384,7 @@ const ProjectCard = ({ project, onOpenDetails }) => {
                 <div
                   onClick={(e) => e.stopPropagation()}
                   className="p-1.5 rounded-md border border-dashed border-purple-400 text-purple-400 cursor-default opacity-80"
-                  title="Private — source code available upon request"
+                  title="Private - source code available upon request"
                 >
                   <LuLock className="w-4 h-4" />
                 </div>

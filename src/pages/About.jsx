@@ -385,7 +385,7 @@ const About = () => {
                         Growth Mindset
                       </h4>
                       <p className="text-sm">
-                        Every challenge is an opportunity to improve — whether
+                        Every challenge is an opportunity to improve - whether
                         in coding, academics, or personal development.
                       </p>
                     </div>
