@@ -256,7 +256,7 @@ const ProjectCard = ({ project, onOpenDetails }) => {
           </div>
 
           {/* Content */}
-          <div className="flex flex-col flex-1 p-5 gap-2">
+          <div className="flex flex-col flex-1 p-5 pb-3 gap-2">
             <div>
               <h3 className="text-base md:text-lg font-bold text-(--text-primary) line-clamp-2 leading-snug">
                 {project.title}
@@ -277,9 +277,9 @@ const ProjectCard = ({ project, onOpenDetails }) => {
             </div>
 
             {/* Tags & Action Bar */}
-            <div className="mt-auto pt-2 flex items-center justify-between gap-2 border-t border-(--border-color)/60">
+            <div className="mt-auto flex items-center justify-between gap-2">
               <div className="flex flex-wrap gap-1">
-                {project.tags.slice(0, 2).map((tag, i) => (
+                {project.tags.slice(0, 3).map((tag, i) => (
                   <span
                     key={i}
                     className="px-2 py-0.5 bg-(--bg-primary) text-(--accent) text-[11px] font-medium rounded border border-(--border-color)"
@@ -293,24 +293,14 @@ const ProjectCard = ({ project, onOpenDetails }) => {
                   </span>
                 )}
               </div>
-
-              {/* Details Button */}
-              <button
-                onClick={(e) => {
-                  e.stopPropagation();
-                  onOpenDetails(project);
-                }}
-                className="px-2.5 py-1 text-xs font-semibold rounded-md bg-(--accent)/10 text-(--accent) hover:bg-(--accent) hover:text-white transition-colors duration-200 flex items-center gap-1 shrink-0"
-                title="View Full Case Study Details"
-              >
-                <LuInfo className="w-3.5 h-3.5" />
-                <span>Details</span>
-              </button>
             </div>
           </div>
 
+          {/* Horizontal Line with Margin */}
+          <div className="mx-5 border-t border-(--border-color)/60" />
+
           {/* Flip hint */}
-          <div className="px-5 pb-3 flex items-center justify-between text-[11px] text-(--text-secondary) opacity-60">
+          <div className="px-5 pt-2 pb-4 flex items-center justify-between text-[11px] text-(--text-secondary) opacity-60">
             <span className="flex items-center gap-1">
               <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
@@ -322,7 +312,7 @@ const ProjectCard = ({ project, onOpenDetails }) => {
 
         {/* BACK */}
         <div
-          className="absolute inset-0 bg-(--card-background) border border-(--accent) rounded-xl flex flex-col p-5 gap-3"
+          className="absolute inset-0 bg-(--card-background) border border-(--accent) rounded-xl flex flex-col p-5 pb-3 gap-3"
           style={{
             backfaceVisibility: "hidden",
             transform: "rotateY(180deg)",
@@ -341,8 +331,6 @@ const ProjectCard = ({ project, onOpenDetails }) => {
               </span>
             )}
           </div>
-
-          <div className="h-px bg-(--border-color)"></div>
 
           {/* Short Solution / Approach Summary */}
           <div>
@@ -371,8 +359,11 @@ const ProjectCard = ({ project, onOpenDetails }) => {
             )}
           </div>
 
+          {/* Horizontal Line with Margin */}
+          <div className="border-t border-(--border-color)/60" />
+
           {/* Action Links & Details */}
-          <div className="flex items-center justify-between gap-2 pt-2 border-t border-(--border-color)">
+          <div className="flex items-center justify-between gap-2 pt-0.5">
             <div className="flex gap-2">
               {/* Code button */}
               {hasCode ? (
@@ -438,6 +429,14 @@ const ProjectCard = ({ project, onOpenDetails }) => {
               <LuInfo className="w-3.5 h-3.5" />
               <span>Full Details</span>
             </button>
+          </div>
+
+          {/* Flip back hint */}
+          <div className="pt-0.5 pb-1 text-[11px] text-(--text-secondary) opacity-60 flex items-center gap-1">
+            <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+            </svg>
+            Click to go back
           </div>
         </div>
       </div>
