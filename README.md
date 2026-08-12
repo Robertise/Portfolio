@@ -15,7 +15,7 @@ I'm an **Artificial Intelligence Student** at **Swinburne University of Technolo
 
 ---
 
-## 🛠 Tech Stack & Tools
+## Tech Stack & Tools
 
 - **Artificial Intelligence / Data**: Python, PyTorch, PyTorch Geometric, TensorFlow, ChemBERTa, RDKit, Scikit-Learn, Pandas, NumPy.
 - **LLM & Agentic Systems**: Agentic RAG, Amazon Bedrock (Claude), Qdrant Vector DB, LangChain concepts, Prompt Engineering.
@@ -24,7 +24,7 @@ I'm an **Artificial Intelligence Student** at **Swinburne University of Technolo
 
 ---
 
-## 🚀 Featured Projects
+## Featured Projects
 
 1. **[Topology-Aware DDI Prediction](https://github.com/Robertise)** *(Research)*: Research project on graph-based Drug-Drug Interaction severity classification under semi-inductive settings. Improved Contraindicated F1 by ~11% over focal loss baseline using R-GCN + ChemBERTa.
 2. **[Pedix — Agentic RAG for Pediatrics](https://github.com/Robertise/Pedix)** *(Cloud AI)*: Pediatric health assistant built on a Level 4 Agentic RAG architecture with a custom 5-stage reasoning loop, sub-10ms safety screen, and 12 AWS services.
