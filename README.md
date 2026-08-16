@@ -32,7 +32,7 @@ I'm an **Artificial Intelligence Student** at **Swinburne University of Technolo
 4. **[LLM Cybersecurity Log Analyzer](https://github.com/nghiatran0401/cyber-llm-agent)**: AI-assisted SOC tool using RAG to interpret system logs and map threats to MITRE ATT&CK techniques.
 
 ---
-
+ 
 ## Connect With Me
 
 - **Email**: [giahuydo705@gmail.com](mailto:giahuydo705@gmail.com)
